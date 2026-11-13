@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/kmcheck/controlmed/web/icon-192.svg" />
+  <title>ControlCheck — Painel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/kmcheck/controlmed/web/assets/index-DWmPqTcX.js"></script>
+  <link rel="stylesheet" crossorigin href="/kmcheck/controlmed/web/assets/index-CyXRu9dV.css">
+
+<!-- ======= Layout 01 — Desktop Premium Override ======= -->
+<style>
+/* ═══════════════════════════════════════════════════════════
+   Layout 01 — ControlCheck Desktop Panel
+   Padrão visual SIGO — sidebar navy escuro, conteúdo limpo,
+   acento azul sutil, design flat profissional
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 1. CSS Custom Properties — paleta SIGO ── */
+:root, :host {
+  /* Sidebar — navy escuro (SIGO) */
+  --color-sidebar: #0e1929 !important;
+  --color-sidebar-dark: #080f1a !important;
+  --color-sidebar-hover: rgba(255,255,255,.04) !important;
+  --color-sidebar-active: rgba(74,144,240,.08) !important;
+  --color-sidebar-text: rgba(255,255,255,.55) !important;
+  --color-sidebar-text-active: #ffffff !important;
+  --color-sidebar-section: rgba(255,255,255,.35) !important;
+  --color-sidebar-border: rgba(255,255,255,.06) !important;
+
+  /* Superfícies limpas */
+  --color-surface: #f7f8fa !important;
+  --color-surface-2: #eef0f4 !important;
+  --color-card: rgba(255,255,255,.95) !important;
+  --color-border: rgba(0,0,0,.07) !important;
+
+  /* Texto */
+  --color-text: #1e2d3d !important;
+  --color-text-2: #5a6a7e !important;
+  --color-text-3: #8a95a5 !important;
+
+  /* Primary/accent — azul SIGO */
+  --color-primary: #3d7ee0 !important;
+  --color-primary-light: #4a90f0 !important;
+  --color-primary-soft: rgba(61,126,224,.10) !important;
+  --color-accent: #3d7ee0 !important;
+  --color-accent-soft: rgba(61,126,224,.10) !important;
+
+  /* Status */
+  --color-success: #34b87a !important;
+  --color-success-soft: rgba(52,184,122,.10) !important;
+  --color-warning: #e8a830 !important;
+  --color-warning-soft: rgba(232,168,48,.10) !important;
+  --color-danger: #e05252 !important;
+  --color-danger-soft: rgba(224,82,82,.08) !important;
+  --color-info: #4a90f0 !important;
+  --color-info-soft: rgba(74,144,240,.10) !important;
+  --color-amber: #e8a830 !important;
+  --color-amber-soft: rgba(232,168,48,.10) !important;
+
+  /* Radius — moderado (SIGO) */
+  --radius-md: 8px !important;
+  --radius-lg: 12px !important;
+  --radius-xl: 16px !important;
+}
+
+/* ── 2. Body — fundo limpo (SIGO) ── */
+body {
+  background: #f7f8fa !important;
+  color: #1e2d3d !important;
+  font-family: 'Inter', -apple-system, 'SF Pro Display', 'SF Pro Text',
+               'DM Sans', Helvetica, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* ── 3. Sidebar — navy escuro sólido (SIGO) ── */
+.bg-sidebar,
+.sidebar-pattern,
+[class*="bg-sidebar"]:not(.bg-sidebar-hover):not(.bg-sidebar-active):not(.bg-sidebar-border) {
+  background: #0e1929 !important;
+}
+
+/* Sem pattern decorativo (SIGO é limpo) */
+.sidebar-pattern::before {
+  display: none !important;
+}
+
+.sidebar-pattern::after {
+  background: none !important;
+}
+
+/* Sidebar — borda lateral */
+.sidebar-pattern,
+[class*="w-[260px]"][class*="bg-sidebar"] {
+  border-right: 1px solid rgba(255,255,255,.06) !important;
+  box-shadow: none !important;
+}
+
+/* Sidebar dividers */
+.bg-sidebar-border {
+  background-color: rgba(255,255,255,.06) !important;
+}
+
+/* Sidebar section labels — uppercase discreto (SIGO) */
+.text-sidebar-section {
+  color: rgba(140,170,210,.40) !important;
+  font-weight: 700 !important;
+  letter-spacing: .10em !important;
+  font-size: 10px !important;
+  text-transform: uppercase !important;
+  padding: 0 22px !important;
+  margin-top: 8px !important;
+}
+
+/* Sidebar text — SIGO usa ~78% branco nos inativos */
+.text-sidebar-text {
+  color: rgba(255,255,255,.78) !important;
+}
+
+/* ── 3b. Sidebar nav items — réplica exata do SIGO ── */
+
+/*
+   SIGO: todos os itens mantêm a mesma posição de texto.
+   O "pill" é criado com margin lateral + radius em TODOS,
+   mas fundo transparente nos inativos — só aparece no hover/ativo.
+   Assim o texto nunca pula.
+*/
+
+/* Todos os nav items: mesma posição, pill invisível por padrão */
+.sidebar-pattern [class*="gap-3"][class*="cursor-pointer"],
+[class*="bg-sidebar"] [class*="gap-3"][class*="cursor-pointer"] {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  padding: 12px 12px !important;
+  margin: 1px 10px !important;
+  border-radius: 8px !important;
+  border-left: none !important;
+  background: transparent !important;
+  transition: background .2s ease, color .2s ease !important;
+}
+
+/* Anular a borda esquerda do compilado (border-l-[3px]) */
+.sidebar-pattern [class*="gap-3"][class*="border-l-"],
+[class*="bg-sidebar"] [class*="gap-3"][class*="border-l-"] {
+  border-left: none !important;
+}
+.border-l-sidebar-section {
+  border-left-color: transparent !important;
+  border-left-width: 0 !important;
+}
+
+/* Hover — pill aparece com fundo sutil (SIGO) */
+.sidebar-pattern [class*="gap-3"][class*="cursor-pointer"]:hover,
+[class*="bg-sidebar"] [class*="gap-3"][class*="cursor-pointer"]:hover,
+.hover\:bg-sidebar-hover:hover {
+  background: rgba(255,255,255,.08) !important;
+}
+
+/* Texto fica branco puro no hover */
+.hover\:text-sidebar-text-active:hover,
+.sidebar-pattern [class*="gap-3"][class*="cursor-pointer"]:hover,
+.sidebar-pattern [class*="gap-3"][class*="cursor-pointer"]:hover * {
+  color: #ffffff !important;
+}
+
+/* Item ativo — pill com fundo sólido, SEM borda, SEM gradiente (SIGO) */
+.bg-sidebar-active {
+  background: rgba(255,255,255,.08) !important;
+}
+
+[class*="border-l-sidebar-section"][class*="bg-sidebar-active"],
+.sidebar-pattern [class*="bg-sidebar-active"],
+[class*="bg-sidebar"] [class*="bg-sidebar-active"] {
+  background: rgba(255,255,255,.08) !important;
+  border-left: none !important;
+}
+
+/* Texto e ícone do item ativo: branco puro */
+[class*="bg-sidebar-active"],
+[class*="bg-sidebar-active"] span,
+[class*="bg-sidebar-active"] p {
+  color: #ffffff !important;
+}
+[class*="bg-sidebar-active"] svg {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Sub-itens sidebar (gap-2) — mesma lógica pill */
+.sidebar-pattern [class*="gap-2"][class*="cursor-pointer"],
+[class*="bg-sidebar"] [class*="gap-2"][class*="cursor-pointer"] {
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  padding: 8px 12px 8px 12px !important;
+  margin: 1px 10px 1px 20px !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  transition: background .2s ease, color .2s ease !important;
+}
+
+/* Sub-item hover */
+.sidebar-pattern [class*="gap-2"][class*="cursor-pointer"]:hover,
+[class*="bg-sidebar"] [class*="gap-2"][class*="cursor-pointer"]:hover {
+  background: rgba(255,255,255,.06) !important;
+  color: #ffffff !important;
+}
+
+/* Sidebar buttons */
+.bg-sidebar.text-white:not(.sidebar-pattern) {
+  background: #162035 !important;
+}
+
+/* ── 4. Cards — flat e limpo (SIGO) ── */
+.glass-card {
+  background: rgba(255,255,255,.97) !important;
+  border: 1px solid rgba(0,0,0,.08) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.03) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  transition: box-shadow .15s ease !important;
+}
+
+.glass-card:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,.06), 0 6px 16px rgba(0,0,0,.04) !important;
+}
+
+.glass-card-solid {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,.07) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* ── 5. Primary buttons — navy escuro (SIGO) ── */
+.bg-primary {
+  background: #1e2d3d !important;
+  color: #ffffff !important;
+}
+
+.bg-primary.text-white {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,.12) !important;
+  transition: all .15s ease !important;
+}
+
+.bg-primary.text-white:hover,
+.hover\:bg-primary-light:hover {
+  background: #263a4d !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,.16) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Sidebar action buttons */
+.bg-sidebar.text-white.shadow-md {
+  background: #1e2d3d !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15) !important;
+}
+
+.bg-sidebar.text-white.shadow-md:hover {
+  background: #263a4d !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,.20) !important;
+}
+
+/* ── 6. Badge / pill — azul SIGO ── */
+.bg-primary-soft {
+  background: rgba(61,126,224,.10) !important;
+}
+.text-primary {
+  color: #3570cc !important;
+}
+.bg-accent-soft {
+  background: rgba(61,126,224,.10) !important;
+}
+.text-accent {
+  color: #3570cc !important;
+}
+
+/* Primary soft badges */
+.bg-primary-soft.text-primary {
+  background: rgba(61,126,224,.10) !important;
+  color: #2d60b0 !important;
+  font-weight: 600 !important;
+}
+
+/* ── 7. Progress bars ── */
+.bg-primary.h-1\.5 {
+  background: linear-gradient(90deg, #2d6ac4, #4a90f0) !important;
+  border-radius: 999px !important;
+}
+
+/* ── 8. Focus rings — azul SIGO ── */
+.focus\:ring-primary\/20:focus {
+  --tw-ring-color: rgba(61,126,224,.20) !important;
+}
+.focus\:ring-primary\/30:focus {
+  --tw-ring-color: rgba(61,126,224,.30) !important;
+}
+.focus\:border-primary\/40:focus {
+  border-color: rgba(61,126,224,.40) !important;
+}
+
+/* ── 9. Tab active — azul SIGO ── */
+.tab-active {
+  border-bottom: 2px solid #3d7ee0 !important;
+  color: #1e2d3d !important;
+  font-weight: 600 !important;
+}
+.tab-inactive:hover {
+  color: #5a6a7e !important;
+  border-bottom-color: rgba(0,0,0,.08) !important;
+}
+
+/* ── 10. Borders — hover azul ── */
+.hover\:border-primary\/30:hover {
+  border-color: rgba(61,126,224,.30) !important;
+}
+.hover\:border-primary\/40:hover {
+  border-color: rgba(61,126,224,.40) !important;
+}
+.border-primary {
+  border-color: #3d7ee0 !important;
+}
+.border-primary\/20 {
+  border-color: rgba(61,126,224,.20) !important;
+}
+.border-primary\/30 {
+  border-color: rgba(61,126,224,.30) !important;
+}
+
+/* ── 11. Backgrounds hover ── */
+.hover\:bg-primary-soft:hover,
+.hover\:bg-primary-soft\/10:hover,
+.hover\:bg-primary-soft\/20:hover,
+.hover\:bg-primary-soft\/30:hover {
+  background: rgba(61,126,224,.06) !important;
+}
+
+.hover\:bg-primary-light:hover {
+  background: #263a4d !important;
+}
+
+.hover\:bg-surface:hover {
+  background: #f7f8fa !important;
+}
+.hover\:bg-surface-2:hover {
+  background: #eef0f4 !important;
+}
+.bg-surface {
+  background: #f7f8fa !important;
+}
+.bg-surface-2 {
+  background: #eef0f4 !important;
+}
+
+/* ── 12. Sidebar icon boxes ── */
+.bg-sidebar.rounded-xl.shadow-lg {
+  background: #162035 !important;
+  border: 1px solid rgba(255,255,255,.06) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.20) !important;
+}
+
+.bg-sidebar.rounded-lg.shadow-md {
+  background: #162035 !important;
+  border: 1px solid rgba(255,255,255,.05) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,.15) !important;
+}
+
+/* ── 13. Status colors (SIGO) ── */
+.bg-success { background: #34b87a !important; }
+.text-success { color: #34b87a !important; }
+.bg-success-soft { background: rgba(52,184,122,.10) !important; }
+
+.bg-danger { background: #e05252 !important; }
+.text-danger { color: #e05252 !important; }
+.bg-danger-soft { background: rgba(224,82,82,.08) !important; }
+
+.bg-warning { background: #e8a830 !important; }
+.text-warning { color: #e8a830 !important; }
+.bg-warning-soft { background: rgba(232,168,48,.10) !important; }
+
+.bg-info { background: #4a90f0 !important; }
+.text-info { color: #4a90f0 !important; }
+.bg-info-soft { background: rgba(74,144,240,.10) !important; }
+
+/* ── 14. Modal overlay ── */
+.bg-black\/40 {
+  background: rgba(0,0,0,.50) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* ── 15. Rounded overrides (SIGO — moderado) ── */
+.rounded-xl {
+  border-radius: 16px !important;
+}
+.rounded-lg {
+  border-radius: 12px !important;
+}
+.rounded-md {
+  border-radius: 8px !important;
+}
+
+/* ── 16. Card backgrounds ── */
+.bg-card {
+  background: rgba(255,255,255,.95) !important;
+}
+.bg-white {
+  background: #ffffff !important;
+}
+.bg-white\/60 {
+  background: rgba(255,255,255,.60) !important;
+}
+.hover\:bg-white\/70:hover {
+  background: rgba(255,255,255,.80) !important;
+}
+
+/* ── 17. Shadows — clean (SIGO) ── */
+.shadow-sm {
+  box-shadow: 0 1px 2px rgba(0,0,0,.04) !important;
+}
+.shadow-md {
+  box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 2px 8px rgba(0,0,0,.04) !important;
+}
+.shadow-lg {
+  box-shadow: 0 2px 6px rgba(0,0,0,.05), 0 6px 16px rgba(0,0,0,.04) !important;
+}
+.shadow-xl {
+  box-shadow: 0 4px 12px rgba(0,0,0,.06), 0 10px 24px rgba(0,0,0,.04) !important;
+}
+.shadow-2xl {
+  box-shadow: 0 8px 20px rgba(0,0,0,.08), 0 16px 36px rgba(0,0,0,.05) !important;
+}
+
+/* ── 18. Scrollbar ── */
+::-webkit-scrollbar {
+  width: 5px !important;
+  height: 5px !important;
+}
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.12) !important;
+  border-radius: 999px !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,.20) !important;
+}
+
+/* ── 19. Texto ── */
+.text-text { color: #1e2d3d !important; }
+.text-text-2 { color: #5a6a7e !important; }
+.text-text-3 { color: #8a95a5 !important; }
+
+/* Large numbers — azul SIGO */
+.text-2xl.font-bold.tabnum.text-primary {
+  color: #3570cc !important;
+  font-weight: 700 !important;
+}
+
+/* ── 20. Borders gerais ── */
+.border-border { border-color: rgba(0,0,0,.07) !important; }
+.border-black\/5 { border-color: rgba(0,0,0,.04) !important; }
+.border-black\/8 { border-color: rgba(0,0,0,.06) !important; }
+.border-black\/10 { border-color: rgba(0,0,0,.08) !important; }
+.divide-border > :not(:last-child) { border-color: rgba(0,0,0,.07) !important; }
+
+/* ── 21. Table rows ── */
+.bg-surface\/30 { background: rgba(247,248,250,.30) !important; }
+.bg-surface\/40 { background: rgba(247,248,250,.40) !important; }
+.bg-surface\/50 { background: rgba(247,248,250,.50) !important; }
+.bg-surface\/60 { background: rgba(247,248,250,.60) !important; }
+
+/* ── 22. Hover text — azul ── */
+.hover\:text-primary:hover,
+.hover\:text-primary-light:hover {
+  color: #3d7ee0 !important;
+}
+.group-hover\:text-primary:is(:where(.group):hover *) {
+  color: #3d7ee0 !important;
+}
+
+/* ── 23. Transitions ── */
+.glass-card,
+.glass-card-solid,
+button,
+a {
+  transition: all .15s ease !important;
+}
+
+/* ── 24. Sidebar active item — azul sutil (SIGO) ── */
+[class*="border-l-sidebar-section"][class*="bg-sidebar-active"] {
+  background: rgba(74,144,240,.08) !important;
+  border-left-color: #4a90f0 !important;
+  border-left-width: 3px !important;
+}
+
+/* ── 25. Header area top ── */
+.sticky.top-0.z-40,
+.sticky.top-0.z-10 {
+  background: rgba(247,248,250,.92) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(0,0,0,.06) !important;
+}
+
+/* ── 26. Input fields (SIGO) ── */
+input[type="text"],
+input[type="number"],
+input[type="search"],
+input[type="date"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+select,
+textarea {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,.12) !important;
+  border-radius: 8px !important;
+  transition: border-color .15s ease, box-shadow .15s ease !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: rgba(61,126,224,.50) !important;
+  box-shadow: 0 0 0 3px rgba(61,126,224,.08) !important;
+  outline: none !important;
+}
+
+/* ── 27. Checkbox accent ── */
+.accent-primary {
+  accent-color: #3d7ee0 !important;
+}
+
+/* ── 28. Left border accents on cards ── */
+.border-l-4 {
+  border-left-color: inherit;
+}
+.border-l-4.border-primary {
+  border-left-color: #3d7ee0 !important;
+}
+
+/* ── 29. Animated pulse glow ── */
+.animate-pulse {
+  animation: pulse-desktop 2s cubic-bezier(.4, 0, .6, 1) infinite !important;
+}
+@keyframes pulse-desktop {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .6; }
+}
+
+/* ── 30. Status indicators (SIGO) ── */
+.bg-green-500 { background: #34b87a !important; }
+.text-green-600 { color: #34b87a !important; }
+.text-green-700 { color: #2a9a64 !important; }
+.text-green-800 { color: #228050 !important; }
+.bg-green-50 { background: rgba(52,184,122,.08) !important; }
+.border-green-200 { border-color: rgba(52,184,122,.20) !important; }
+.border-green-300 { border-color: rgba(52,184,122,.30) !important; }
+
+/* Red status */
+.bg-red-500 { background: #e05252 !important; }
+.text-red-500 { color: #e05252 !important; }
+.text-red-600 { color: #d04040 !important; }
+.bg-red-50 { background: rgba(224,82,82,.06) !important; }
+.bg-red-100 { background: rgba(224,82,82,.10) !important; }
+.border-red-200 { border-color: rgba(224,82,82,.20) !important; }
+
+/* ── 31. Sidebar logo icon ── */
+.bg-sidebar.rounded-xl.shadow-lg svg,
+.bg-sidebar.rounded-xl.shadow-lg img {
+  filter: none !important;
+}
+
+/* ── 32. Selection ── */
+::selection {
+  background: rgba(61,126,224,.20) !important;
+  color: #1e2d3d !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   33–45. Tela de Login/Setup — Azul Petróleo & Ciano
+   Fundo azul gelo + card escuro petróleo glassmórfico
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 33. Container login/setup — fundo azul gelo ── */
+.min-h-screen.bg-surface.flex.items-center {
+  background:
+    radial-gradient(ellipse 900px 600px at 30% 20%, rgba(64,196,216,.08), transparent 70%),
+    radial-gradient(ellipse 700px 500px at 70% 70%, rgba(32,152,176,.05), transparent 70%),
+    radial-gradient(ellipse 500px 400px at 50% 50%, rgba(64,196,216,.03), transparent 70%),
+    linear-gradient(135deg, #eaf2f6 0%, #dfe9f0 50%, #d6e2ec 100%) !important;
+}
+
+/* ── 34. Padrão abstrato de rodovias em ciano ── */
+.min-h-screen.bg-surface.flex.items-center::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  opacity: .07 !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cg fill='none'%3E%3Cpath d='M-30 120 Q100 50 220 100 T450 80 T630 110' stroke='%23306878' stroke-width='2.5' opacity='0.5'/%3E%3Cpath d='M-30 124 Q100 54 220 104 T450 84 T630 114' stroke='%23306878' stroke-width='0.6' opacity='0.35' stroke-dasharray='12 8'/%3E%3Cpath d='M-20 240 Q120 190 260 230 T500 210 T640 250' stroke='%23306878' stroke-width='1.8' opacity='0.4'/%3E%3Cpath d='M-20 243 Q120 193 260 233 T500 213 T640 253' stroke='%23306878' stroke-width='0.4' opacity='0.25' stroke-dasharray='8 10'/%3E%3Cpath d='M-10 370 Q130 330 250 360 T480 340 T620 375' stroke='%23306878' stroke-width='1.2' opacity='0.3'/%3E%3Cpath d='M200 -20 Q180 100 210 200 T190 350 T220 500 T200 630' stroke='%23306878' stroke-width='1' opacity='0.2'/%3E%3Cpath d='M420 -10 Q440 120 410 230 T430 380 T415 520 T440 640' stroke='%23306878' stroke-width='0.8' opacity='0.15'/%3E%3Cpath d='M-20 490 Q100 460 230 485 T460 470 T630 500' stroke='%23306878' stroke-width='0.8' opacity='0.2'/%3E%3Crect x='220' y='95' width='3' height='10' rx='1.5' fill='%23306878' opacity='0.35'/%3E%3Crect x='450' y='75' width='3' height='10' rx='1.5' fill='%23306878' opacity='0.25'/%3E%3Crect x='260' y='225' width='2.5' height='9' rx='1' fill='%23306878' opacity='0.25'/%3E%3Crect x='480' y='335' width='2.5' height='9' rx='1' fill='%23306878' opacity='0.2'/%3E%3Ccircle cx='210' cy='200' r='5' fill='none' stroke='%23306878' stroke-width='0.8' opacity='0.2'/%3E%3Ccircle cx='420' cy='230' r='4' fill='none' stroke='%23306878' stroke-width='0.6' opacity='0.15'/%3E%3Ccircle cx='200' cy='360' r='3.5' fill='none' stroke='%23306878' stroke-width='0.5' opacity='0.15'/%3E%3C/g%3E%3C/svg%3E") !important;
+  background-size: 600px 600px !important;
+  z-index: 0 !important;
+}
+
+/* ── 35. Fundo SVG original (OA) — recolorir para tons petróleo ── */
+.min-h-screen.bg-surface.flex.items-center > div[aria-hidden="true"] {
+  opacity: 1 !important;
+}
+
+.min-h-screen.bg-surface.flex.items-center > div[aria-hidden="true"] > div:first-child {
+  background:
+    radial-gradient(ellipse 600px 400px at 25% 15%, rgba(64,196,216,.06) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 350px at 75% 75%, rgba(32,152,176,.04) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 80% 20%, rgba(64,196,216,.03) 0%, transparent 70%) !important;
+}
+
+.min-h-screen.bg-surface.flex.items-center > div[aria-hidden="true"] svg {
+  opacity: .06 !important;
+}
+
+/* SVG elements — tons petróleo/ciano */
+.min-h-screen.bg-surface.flex.items-center > div[aria-hidden="true"] svg path {
+  fill: #a0c8d4 !important;
+}
+.min-h-screen.bg-surface.flex.items-center > div[aria-hidden="true"] svg line {
+  stroke: #88b4c4 !important;
+}
+.min-h-screen.bg-surface.flex.items-center > div[aria-hidden="true"] svg rect {
+  fill: #40c4d8 !important;
+}
+.min-h-screen.bg-surface.flex.items-center > div[aria-hidden="true"] svg circle {
+  fill: #40c4d8 !important;
+}
+.min-h-screen.bg-surface.flex.items-center > div[aria-hidden="true"] svg ellipse {
+  fill: transparent !important;
+}
+
+/* ── 36. Texto sobre fundo claro — login/setup ── */
+.min-h-screen.bg-surface.flex.items-center .text-text {
+  color: #0c1e2a !important;
+}
+.min-h-screen.bg-surface.flex.items-center .text-text-2 {
+  color: #5a7a8c !important;
+}
+.min-h-screen.bg-surface.flex.items-center .text-text-3 {
+  color: #7a9aaa !important;
+}
+
+/* Título e subtítulo */
+.min-h-screen.bg-surface.flex.items-center h1 {
+  color: #0c1e2a !important;
+  font-weight: 700 !important;
+  letter-spacing: -.01em !important;
+}
+
+/* ── 37. Form card — petróleo escuro glassmórfico ── */
+.min-h-screen.bg-surface.flex.items-center .glass-card-solid,
+.min-h-screen.bg-surface.flex.items-center .glass-card {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.09) 0%, transparent 35%),
+    linear-gradient(210deg, transparent 55%, rgba(255,255,255,.04) 62%, transparent 70%),
+    rgba(12,30,42,.90) !important;
+  border: 1px solid rgba(255,255,255,.10) !important;
+  color: #ffffff !important;
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.14),
+    inset 0 -1px 0 rgba(255,255,255,.03),
+    0 24px 60px rgba(0,0,0,.25),
+    0 8px 20px rgba(0,0,0,.15),
+    0 0 0 1px rgba(0,0,0,.08) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(140%) !important;
+  backdrop-filter: blur(30px) saturate(140%) !important;
+}
+
+/* ── 38. Inputs no card petróleo ── */
+.min-h-screen.bg-surface.flex.items-center input[type="text"],
+.min-h-screen.bg-surface.flex.items-center input[type="password"],
+.min-h-screen.bg-surface.flex.items-center input[type="email"],
+.min-h-screen.bg-surface.flex.items-center input[type="number"],
+.min-h-screen.bg-surface.flex.items-center input[type="tel"],
+.min-h-screen.bg-surface.flex.items-center input[type="url"],
+.min-h-screen.bg-surface.flex.items-center select,
+.min-h-screen.bg-surface.flex.items-center textarea {
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(255,255,255,.10) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+}
+
+.min-h-screen.bg-surface.flex.items-center input::placeholder,
+.min-h-screen.bg-surface.flex.items-center textarea::placeholder {
+  color: rgba(255,255,255,.28) !important;
+}
+
+.min-h-screen.bg-surface.flex.items-center input:focus,
+.min-h-screen.bg-surface.flex.items-center select:focus,
+.min-h-screen.bg-surface.flex.items-center textarea:focus {
+  border-color: rgba(64,196,216,.50) !important;
+  box-shadow: 0 0 0 3px rgba(64,196,216,.12) !important;
+  background: rgba(255,255,255,.08) !important;
+}
+
+/* ── 39. Labels dentro do form ── */
+.min-h-screen.bg-surface.flex.items-center label {
+  color: rgba(255,255,255,.48) !important;
+}
+
+/* ── 40. Botão principal — petróleo escuro com texto ciano ── */
+.min-h-screen.bg-surface.flex.items-center .bg-sidebar.text-white.shadow-md,
+.min-h-screen.bg-surface.flex.items-center button[type="submit"] {
+  background: linear-gradient(135deg, #40c4d8 0%, #2098b0 50%, #1a7a90 100%) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border: none !important;
+  border-radius: 14px !important;
+  box-shadow:
+    0 6px 20px rgba(64,196,216,.30),
+    0 2px 6px rgba(64,196,216,.15),
+    inset 0 1px 0 rgba(255,255,255,.20) !important;
+  letter-spacing: .01em !important;
+}
+
+.min-h-screen.bg-surface.flex.items-center button[type="submit"]:hover {
+  background: linear-gradient(135deg, #50d4e8 0%, #40c4d8 50%, #2098b0 100%) !important;
+  box-shadow:
+    0 8px 28px rgba(64,196,216,.40),
+    0 4px 10px rgba(64,196,216,.20),
+    inset 0 1px 0 rgba(255,255,255,.25) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── 41. Link "Já tenho uma conta" ── */
+.min-h-screen.bg-surface.flex.items-center a,
+.min-h-screen.bg-surface.flex.items-center .cursor-pointer:not(button) {
+  color: rgba(255,255,255,.42) !important;
+}
+.min-h-screen.bg-surface.flex.items-center a:hover,
+.min-h-screen.bg-surface.flex.items-center .cursor-pointer:not(button):hover {
+  color: #40c4d8 !important;
+}
+
+/* ── 42. Info box no setup ── */
+.min-h-screen.bg-surface.flex.items-center .bg-info-soft {
+  background: rgba(64,196,216,.10) !important;
+  border-color: rgba(64,196,216,.18) !important;
+  color: #80dce8 !important;
+}
+.min-h-screen.bg-surface.flex.items-center .text-info {
+  color: #80dce8 !important;
+}
+
+/* Danger box */
+.min-h-screen.bg-surface.flex.items-center .bg-danger-soft {
+  background: rgba(239,83,80,.08) !important;
+  border-color: rgba(239,83,80,.15) !important;
+}
+.min-h-screen.bg-surface.flex.items-center .text-danger {
+  color: #ef9a9a !important;
+}
+
+/* ── 43. Logo icon box — ciano com glow ── */
+.min-h-screen.bg-surface.flex.items-center .bg-sidebar.rounded-xl.shadow-lg {
+  background:
+    linear-gradient(135deg, #40c4d8 0%, #2098b0 100%) !important;
+  border: none !important;
+  box-shadow:
+    0 0 24px rgba(64,196,216,.25),
+    0 12px 30px rgba(64,196,216,.20),
+    0 4px 10px rgba(0,0,0,.12),
+    inset 0 1px 0 rgba(255,255,255,.20) !important;
+}
+
+/* ── 44. Spinner no botão ── */
+.min-h-screen.bg-surface.flex.items-center .border-t-white {
+  border-top-color: #ffffff !important;
+}
+.min-h-screen.bg-surface.flex.items-center .border-white\/30 {
+  border-color: rgba(255,255,255,.30) !important;
+}
+
+/* ── 45. Eye/show password icon ── */
+.min-h-screen.bg-surface.flex.items-center .text-text-3.hover\:text-text-2 {
+  color: rgba(255,255,255,.28) !important;
+}
+.min-h-screen.bg-surface.flex.items-center .text-text-3.hover\:text-text-2:hover {
+  color: rgba(255,255,255,.55) !important;
+}
+</style>
+
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>

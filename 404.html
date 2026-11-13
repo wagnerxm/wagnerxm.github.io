@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Página não encontrada</title>
+<script>
+  /* ControlCheck (aplicativo de uma página só): os links internos (ex.: /kmcheck/controlmed/contratos) chegam aqui;
+     devolve para o app com a rota na URL, como o 404.html dele fazia */
+  (function(){ var base='/kmcheck/controlmed', p=location.pathname;
+    if(p.indexOf(base+'/')===0){ var seg=p.slice(base.length).split('/').filter(Boolean); location.replace(base+'/'+(seg.length?'?/'+seg.join('/'):'')+location.hash) }
+  })();
+</script>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;font:500 16px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#eef0f1;color:#1b1f22;text-align:center;padding:24px;box-sizing:border-box}a{color:#4d6a00;font-weight:700}</style>
+</head>
+<body><p>Página não encontrada.<br><a href="https://kmcheck.com.br/">Ir para o KM Check</a></p></body>
+</html>
