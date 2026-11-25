@@ -33,21 +33,21 @@ footer{margin-top:48px;color:var(--tinta3);font-size:14px}
 <header><img src="../logo-kmcheck.png" alt="KM Check"></header>
 <span class="olho">KM Check</span>
 <h1>Política de Privacidade</h1>
-<p class="data">Última atualização: 31 de outubro de 2026</p>
+<p class="data">Última atualização: 25 de novembro de 2026</p>
 
 <div class="resumo">
 <b>Resumo</b>
 <ul>
 <li>As suas fotos ficam no seu celular. O KM Check não envia fotos para nenhum servidor.</li>
-<li>A localização é usada no próprio celular para calcular o KM da rodovia.</li>
-<li>Dados técnicos de uso só são enviados se você permitir, e você pode desligar quando quiser.</li>
+<li>O ponto exato do GPS é usado só no próprio celular, para calcular o KM da rodovia, e nunca é enviado.</li>
+<li>Dados técnicos de uso só são enviados se você permitir, e você pode desligar quando quiser. A partir da versão 1.1.0 eles incluem o trecho de rodovia em que o app é usado (rodovia e KM a cada 0,5 km).</li>
 <li>Não vendemos dados e não exibimos anúncios.</li>
 </ul>
 </div>
 
 <h2>1. Quem é o responsável</h2>
 <p>O KM Check é um aplicativo de registro fotográfico de rodovias. O responsável pelo aplicativo e pelo tratamento dos dados descritos aqui é <b>Wagner Xavier Machado Júnior</b>. Na Google Play, o aplicativo é publicado pela conta de desenvolvedor <b>A1 ENGENHARIA LTDA</b>.</p>
-<p>O KM Check não é um aplicativo do governo e não tem vínculo com o DNIT nem com outro órgão público. Os traçados das rodovias federais vêm dos dados abertos do Sistema Nacional de Viação (SNV), publicados pelo DNIT (<a href="https://www.gov.br/dnit/pt-br/assuntos/atlas-e-mapas/pnv-e-snv">gov.br/dnit — PNV e SNV</a>) e distribuídos pela Infraestrutura Nacional de Dados Espaciais (<a href="https://inde.gov.br">inde.gov.br</a>). O KM é calculado no próprio celular a partir desses dados e não substitui documentos oficiais.</p>
+<p>O KM Check não é um aplicativo do governo e não tem vínculo com o DNIT nem com outro órgão público. Os traçados das rodovias federais vêm dos dados abertos do Sistema Nacional de Viação (SNV), publicados pelo DNIT (<a href="https://www.gov.br/dnit/pt-br/assuntos/atlas-e-mapas/pnv-e-snv">gov.br/dnit — PNV e SNV</a>) e distribuídos pela Infraestrutura Nacional de Dados Espaciais (<a href="https://inde.gov.br">inde.gov.br</a>). Os traçados das rodovias estaduais vêm dos dados públicos dos órgãos rodoviários de cada estado (DER-DF, DER-ES, GOINFRA, DER-MG, AGESUL, SINFRA-MT, DER-PB, DER-PE, DER-PR, DER-RO, DAER-RS, SIE-SC e DER-SP), com os quais o KM Check também não tem vínculo. O KM é calculado no próprio celular a partir desses dados e não substitui documentos oficiais.</p>
 <p>Contato para qualquer assunto de privacidade: <a href="mailto:suporte@kmcheck.com.br">suporte@kmcheck.com.br</a></p>
 
 <h2>2. O que fica só no seu celular</h2>
@@ -67,18 +67,20 @@ footer{margin-top:48px;color:var(--tinta3);font-size:14px}
 <li>a lista de rodovias baixadas no app;</li>
 <li>a região onde o app foi aberto e as regiões por onde ele passou enquanto estava aberto, com precisão de cerca de 2 km (as coordenadas arredondadas para uma grade de 0,02°, nunca o ponto exato do GPS);</li>
 <li>um resumo do uso de cada dia, só com números: tempo com o app aberto, quantas vezes foi aberto (inclusive sem internet — o resumo fica guardado no aparelho e é enviado quando houver conexão), quantas fotos foram tiradas por formato, lado da pista e rodovia, minutos no Modo Carro, consultas, rodovias baixadas, atualizadas, apagadas ou importadas, quantidade de rodovias e de contratos cadastrados (sem os nomes), espaço ocupado pelo app e a qualidade técnica do uso (faixa de precisão do GPS, tempo até o primeiro sinal, tempo sem sinal, tempo para abrir a câmera e falhas ao gravar a foto). Não envia fotos, legendas, nomes de contratos ou serviços, nem o ponto exato;</li>
+<li>a partir da versão 1.1.0, o trecho de rodovia em que o app é usado. Para cada foto tirada: a hora, a rodovia e o KM arredondado a cada 0,5 km, a distância entre o ponto do GPS e o eixo da rodovia, a precisão e a idade da leitura do GPS e se o Modo Carro estava ligado. A cada minuto com o app aberto: a rodovia e o KM arredondado a cada 0,5 km, a distância até o eixo, se o Modo Carro estava ligado e se o celular estava sem sinal de GPS ou sem internet. Esses dados mostram em que rodovia e em que trecho o app esteve em uso em cada dia e horário, com precisão de cerca de 500 m ao longo da rodovia. As coordenadas do GPS, as fotos e as legendas nunca são enviadas;</li>
+<li>os tempos de carregamento do app (quanto demora para abrir, para mostrar o primeiro KM e para baixar uma rodovia) e a hora do relógio do aparelho no momento do envio, usada para reconhecer celulares com a data ou a hora erradas;</li>
 <li>como o app foi instalado (loja de aplicativos, tela de início ou navegador);</li>
 <li>se o app tiver uma falha, o registro técnico do erro: a mensagem de erro, o trecho do código onde aconteceu, a versão do app, a tela que estava aberta e o código do aparelho. Ele não traz fotos, legendas, rodovias consultadas nem a localização.</li>
 </ul>
-<p>Usamos essas informações para dar suporte, entender em quais aparelhos e rodovias o app é usado e corrigir problemas. Você pode desligar o envio a qualquer momento tocando em <b>VERSÃO ⓘ</b>, no topo do app, que abre a janela <b>Sobre o KM Check</b>, na chave <b>Enviar dados de uso</b>.</p>
-<p><b>Download de rodovias.</b> Quando você baixa uma rodovia, o app pede ao nosso servidor (kmcheck.com.br e api.kmcheck.com.br) o traçado daquela rodovia. Se o nosso servidor não responder, o app pode buscar os mesmos dados públicos num servidor reserva do mesmo responsável (controlcheck.duckdns.org) ou diretamente no serviço público de mapas do DNIT (geoservicos.inde.gov.br). Esses pedidos informam apenas a rodovia e a UF. Os dados técnicos de uso nunca vão para esses endereços.</p>
+<p>Usamos essas informações para dar suporte, entender em quais aparelhos e rodovias o app é usado e corrigir problemas. O trecho de rodovia serve para conferir a qualidade dos traçados (onde o GPS fica longe do eixo), encontrar trechos sem sinal, saber quais trechos já foram registrados, em que dias e horários o app foi usado em campo e se as fotos foram tiradas com sinal de GPS confiável. Se você já tinha permitido o envio numa versão anterior, o app pergunta de novo antes de começar a registrar o trecho de rodovia; enquanto você não responder, ele não é registrado. Você pode desligar o envio a qualquer momento tocando em <b>VERSÃO ⓘ</b>, no topo do app, que abre a janela <b>Sobre o KM Check</b>, na chave <b>Enviar dados de uso</b>.</p>
+<p><b>Download de rodovias.</b> Quando você baixa uma rodovia, o app pede ao nosso servidor (kmcheck.com.br e api.kmcheck.com.br) o traçado daquela rodovia. Se o nosso servidor não responder, o app pode buscar os mesmos dados públicos num servidor reserva do mesmo responsável (controlcheck.duckdns.org) ou diretamente no serviço público de mapas do DNIT (geoservicos.inde.gov.br). Esses pedidos informam apenas a rodovia, a UF e a versão escolhida. Os dados técnicos de uso nunca vão para esses endereços.</p>
 <p><b>Registros técnicos de acesso.</b> Como qualquer site, os servidores que entregam o app e os dados registram o endereço IP, a data e a hora dos acessos, por segurança e para resolver falhas.</p>
 
 <h2>4. Com quem compartilhamos</h2>
-<p>Não vendemos nem alugamos dados. Os dados técnicos de uso ficam no servidor do KM Check e não são repassados a terceiros. Usamos fornecedores apenas para hospedar o app e os dados: servidor contratado na Contabo e o GitHub Pages (GitHub), que entrega a versão web do app. O manual do usuário, quando aberto com internet, carrega fontes de texto do Google Fonts.</p>
+<p>Não vendemos nem alugamos dados. Os dados técnicos de uso ficam no servidor do KM Check e não são repassados a terceiros. Usamos fornecedores apenas para hospedar o app e os dados: servidor contratado na Contabo e o GitHub Pages (GitHub), que hospeda páginas públicas de apoio (aviso de instalação, download, manual e uma cópia desta política). O manual do usuário, quando aberto com internet, carrega fontes de texto do Google Fonts.</p>
 
 <h2>5. Por quanto tempo guardamos</h2>
-<p>O resumo do uso de cada dia e o histórico de acessos são apagados automaticamente depois de cerca de 7 meses. Os registros de erro guardam só as 300 falhas mais recentes. Os dados do painel têm uma cópia de segurança por dia, guardada no próprio servidor por 14 dias. O cadastro do aparelho (código, modelo, versão do app e último acesso) fica guardado enquanto o app for usado e é apagado quando você pedir. Os registros técnicos de acesso são guardados pelo tempo necessário à segurança dos servidores.</p>
+<p>O resumo do uso de cada dia (inclusive o trecho de rodovia) e o histórico de acessos são apagados automaticamente depois de cerca de 7 meses. Os registros de erro guardam só as 300 falhas mais recentes. Os dados do painel têm uma cópia de segurança por dia, guardada no próprio servidor por 14 dias. O cadastro do aparelho (código, modelo, versão do app e último acesso) fica guardado enquanto o app for usado e é apagado quando você pedir. Os registros técnicos de acesso são guardados pelo tempo necessário à segurança dos servidores.</p>
 
 <h2>6. Os seus direitos (LGPD)</h2>
 <p>Pela Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você pode pedir a confirmação de que tratamos seus dados, o acesso a eles, a correção, a exclusão e informações sobre o compartilhamento, além de revogar a autorização a qualquer momento. Para isso, escreva para <a href="mailto:suporte@kmcheck.com.br">suporte@kmcheck.com.br</a>. Informe, se possível, o código do aparelho, que aparece no app (toque em <b>VERSÃO ⓘ</b>, no topo do app, que abre a janela <b>Sobre o KM Check</b> › Código do aparelho), para localizarmos os dados do seu celular.</p>
